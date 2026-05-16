@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>AI Expense Tracker</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+<!-- NAVBAR START -->
+
+<nav class="navbar navbar-dark bg-dark">
+
+    <div class="container-fluid">
+
+        <span class="navbar-brand mb-0 h1">
+
+            AI Expense Tracker
+
+        </span>
+
+    </div>
+
+</nav>
+
+<!-- NAVBAR END -->
+
+
+<div class="container mt-5">
+
+    <h1 class="text-center">
+        AI Expense Tracker
+    </h1>
+
+    <h2 class="text-center mb-4">
+        Total Expense: ₹{{ total }}
+    </h2>
+
+    <a href="/add/" class="btn btn-primary mb-4">
+
+        Add Expense
+
+    </a>
+
+    {% for expense in expenses %}
+
+    <div class="card shadow p-4 mb-4 rounded">
+
+        <h3>
+            {{ expense.title }}
+        </h3>
+
+        <p>
+            Amount: ₹{{ expense.amount }}
+        </p>
+
+        <p>
+            Category: {{ expense.category }}
+        </p>
+
+        <a href="/edit/{{ expense.id }}/"
+           class="btn btn-warning me-2">
+
+            Edit
+
+        </a>
+
+        <a href="/delete/{{ expense.id }}/"
+           class="btn btn-danger">
+
+            Delete
+
+        </a>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+<!-- FOOTER START -->
+
+<footer class="bg-dark text-white text-center p-3 mt-5">
+
+    <p>
+        AI Expense Tracker © 2026
+    </p>
+
+</footer>
+
+<!-- FOOTER END -->
+
+</body>
+
+</html>

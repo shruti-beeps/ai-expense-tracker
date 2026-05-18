@@ -1,17 +1,74 @@
 <!DOCTYPE html>
 <html>
-
 <head>
-
     <title>Add Expense</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+
+        body{
+            background: #f4f7fc;
+            font-family: Arial;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box{
+            background: white;
+            padding: 40px;
+            width: 400px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+        }
+
+        h1{
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        input, select{
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 15px;
+        }
+
+        button{
+            width: 100%;
+            padding: 12px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background: #45a049;
+        }
+
+        a{
+            text-decoration: none;
+            color: blue;
+        }
+
+        .back{
+            text-align: center;
+            margin-top: 15px;
+        }
+
+    </style>
 
 </head>
-
 <body>
 
-<div class="container mt-5">
+<div class="box">
 
     <h1>Add Expense</h1>
 
@@ -19,24 +76,31 @@
 
         {% csrf_token %}
 
-        <input type="text"
-               name="title"
-               placeholder="Enter Expense Title"
-               class="form-control mb-3">
+        {% if form %}
 
-        <input type="number"
-               name="amount"
-               placeholder="Enter Amount"
-               class="form-control mb-3">
+            {{ form.as_p }}
 
-        <button type="submit"
-                class="btn btn-success">
+        {% else %}
 
-            Save Expense
+            <input type="text"
+                   name="title"
+                   placeholder="Enter Expense Title"
+                   required>
 
-        </button>
+            <input type="number"
+                   name="amount"
+                   placeholder="Enter Amount"
+                   required>
+
+        {% endif %}
+
+        <button type="submit">Save Expense</button>
 
     </form>
+
+    <div class="back">
+        <a href="/home/">← Back to Home</a>
+    </div>
 
 </div>
 
